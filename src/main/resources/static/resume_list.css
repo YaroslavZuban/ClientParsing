@@ -1,0 +1,23 @@
+body {
+    background-color: #111111; /* Цвет фона страницы */
+    color: #ffffff; /* Цвет текста */
+}
+
+/* Стили для формочки вакансии */
+.person-data {
+    border: 1px solid transparent; /* Прозрачная рамка */
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #262626; /* Цвет фона формочки */
+    transition: border-color 0.3s ease; /* Плавное изменение цвета рамки */
+}
+
+/* Стили для текста меток */
+.label {
+    font-weight: bold;
+}
+
+/* Стили при наведении на формочку вакансии */
+.person-data:hover {
+    border-color: #0FB55F; /* Цвет рамки при наведении */
+}
