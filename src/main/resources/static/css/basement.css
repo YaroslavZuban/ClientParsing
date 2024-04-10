@@ -1,0 +1,91 @@
+.site-footer {
+    margin-block-start: 20px;
+    background-color: #262626;
+    color: white;
+    padding: 25px 0;
+}
+
+.footer-content {
+    width: 50%;
+    float: left;
+    padding: 0 20px;
+}
+
+.footer-content h2 {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+    transition: color 0.3s; /* Плавное изменение цвета при наведении */
+}
+
+.footer-content p {
+    margin-bottom: 10px;
+    transition: color 0.3s; /* Плавное изменение цвета при наведении */
+}
+
+.subscribe-form input[type="email"] {
+    width: 70%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.subscribe-form button {
+    padding: 10px 20px;
+    background-color: #0FB55F;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Плавное изменение цвета фона при наведении */
+}
+
+.subscribe-form button:hover {
+    background-color: #0CA94D; /* Изменение цвета фона при наведении */
+}
+
+/* Плавное увеличение размера при наведении на текст */
+.footer-content:hover h2,
+.footer-content:hover p {
+    color: #0FB55F; /* Изменение цвета текста при наведении */
+    transform: scale(1.1); /* Увеличение размера при наведении */
+}
+
+
+.footer-images {
+    display: flex; /* Отображение изображений в виде горизонтального ряда */
+    justify-content: space-evenly; /* Выравнивание по центру */
+}
+
+.footer-image {
+    position: relative; /* Установка относительного позиционирования для родительского элемента */
+    width: 50px; /* Начальная ширина изображения */
+    height: 50px; /* Начальная высота изображения */
+    display: inline-block; /* Сделать изображение блочным элементом */
+    overflow: hidden; /* Скрытие содержимого, которое выходит за пределы размеров элемента */
+    background-color: white; /* Белый фон изображения */
+    border-radius: 50%; /* Создание круглого фона */
+    transition: transform 0.3s, background-color 0.3s; /* Плавное изменение размера и цвета фона при наведении */
+}
+
+.footer-image::content {
+    content: ''; /* Добавление псевдоэлемента */
+    position: absolute; /* Абсолютное позиционирование относительно родительского элемента */
+    width: 100%; /* Ширина псевдоэлемента равна ширине родительского элемента */
+    height: 100%; /* Высота псевдоэлемента равна высоте родительского элемента */
+    background-color: white; /* Белый цвет псевдоэлемента */
+    border-radius: 50%; /* Сделать псевдоэлемент круглым */
+    opacity: 0; /* Начальная прозрачность псевдоэлемента */
+    transition: opacity 0.3s, background-color 0.3s; /* Плавное изменение прозрачности и цвета фона при наведении */
+}
+
+.footer-image:hover {
+    opacity: 1; /* Показать псевдоэлемент при наведении */
+    background-color: #0FB55F; /* Зеленый цвет фонового круга при наведении */
+}
+
+.footer-image:hover {
+    transform: scale(1.4); /* Увеличение размера изображения при наведении */
+}
+

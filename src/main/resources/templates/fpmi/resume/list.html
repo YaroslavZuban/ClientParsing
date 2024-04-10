@@ -2,81 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Person Data</title>
-    <style>
-        /* Стили для всей страницы */
-        body {
-            background-color: #111111; /* Цвет фона страницы */
-            color: #ffffff; /* Цвет текста */
-        }
-
-        /* Стили для формочки вакансии */
-        .person-data {
-            border: 1px solid transparent; /* Прозрачная рамка */
-            padding: 20px; /* Отступы внутри формочки */
-            margin: 0 auto; /* Центрирование формочки */
-            margin-bottom: 20px;
-            background-color: #262626; /* Цвет фона формочки */
-            transition: border-color 0.3s ease; /* Плавное изменение цвета рамки */
-            width: 50%; /* Ширина формочки (можете настроить по своему усмотрению) */
-            border-radius: 10px; /* Закругление углов */
-            display: flex; /* Отображение элементов в столбце */
-            flex-direction: column; /* Расположение элементов в столбце */
-            align-items: flex-start; /* Выравнивание элементов по левому краю */
-        }
-
-        /* Стили для заголовка резюме */
-        .resume-title {
-            display: flex;
-            justify-content: space-between;
-            font-size: 16px; /* Большой размер текста */
-            font-weight: bold; /* Жирный текст */
-            margin-bottom: 10px; /* Отступ снизу заголовка */
-            width: 100%; /* Ширина заголовка (можете настроить по своему усмотрению) */
-            word-wrap: break-word; /* Перенос длинных слов */
-            white-space: nowrap; /* Запрет переноса строки */
-            overflow: hidden; /* Скрытие лишнего контента */
-            text-overflow: ellipsis; /* Отображение многоточия при обрезании текста */
-            transition: font-size 0.3s ease, color 0.3s ease; /* Плавное изменение размера и цвета */
-        }
-
-        /* Стили для текста меток */
-        .label {
-            font-weight: bold;
-        }
-
-        /* Стили для остального текста */
-        .text {
-            font-size: 14px; /* Меньший размер текста */
-            margin-bottom: 5px; /* Отступ снизу для остального текста */
-        }
-
-        /* Стили для заголовка ЗП */
-        .wage {
-            font-weight: bold; /* Жирный текст */
-            margin-right: 10px; /* Отступ справа */
-            margin-bottom: 10px; /* Отступ снизу заголовка */
-        }
-
-        /* Стили при наведении на формочку вакансии */
-        .person-data:hover {
-            border-color: #0FB55F; /* Цвет рамки при наведении */
-        }
-
-        /* Стили для контейнера заголовка ЗП и самой ЗП */
-        .wage-container {
-            display: flex; /* Отображение элементов в строке */
-            align-items: center; /* Выравнивание элементов по вертикали */
-        }
-
-        /* Стили для заголовка резюме при наведении мыши */
-        .person-data:hover .resume-title {
-            font-size: 18px; /* Увеличение размера текста */
-            color: #0FB55F; /* Изменение цвета текста */
-        }
-    </style>
+    <title>Соискатели</title>
+    <link rel="stylesheet" href="/static/css/resume_list.css" th:href="@{/css/resume_list.css}">
+    <link rel="stylesheet" href="/static/css/header_styles.css" th:href="@{/css/header_styles.css}">
+    <link rel="stylesheet" href="/static/css/basement.css" th:href="@{/css/basement.css}">
 </head>
 <body>
+<div class="header">
+    <div class="header-logo">
+        <img src="/static/image/logo.png" th:src="@{/image/logo.png}" alt="">
+        <span class="search-text">Поиск соискателей</span>
+    </div>
+</div>
+
 <div th:if="${not #lists.isEmpty(resumes)}">
     <div th:each="resume : ${resumes}" class="person-data">
         <div class="resume-title">
@@ -91,13 +29,45 @@
         </div>
         <div class="text">
             <span class="label">Навыки:</span>
-            <span th:if="${resume.skills != null}" th:text="${resume.skills.substring(0, resume.skills.lastIndexOf(' ', 200))} + '...'"></span>
+            <span th:if="${resume.skills != null}"
+                  th:text="${resume.skills.substring(0, resume.skills.lastIndexOf(' ', 200))} + '...'"></span>
             <span th:unless="${resume.skills != null}">Не известно</span>
         </div>
     </div>
 </div>
-<div th:if="${#lists.isEmpty(resumes)}">
-    <p>No data available</p>
+
+<div>
+    <div class="page-buttons">
+        <span>
+            <a id="endPageLink" class="page-link" href="#"><< End Page</a>
+            <script type="text/javascript" th:src="@{/js/endPage.js}"></script>
+        </span>
+        <span>
+            <a id="nextPageLink" class="page-link" href="#">Next Page >></a>
+            <script type="text/javascript" th:src="@{/js/nextPage.js}"></script>
+        </span>
+    </div>
 </div>
+
+<footer class="site-footer">
+    <div class="footer-images">
+        <span>
+            <a href="https://t.me/JaroslavZuban">
+                <img th:src="@{/image/telegram.svg}" src="../static/image/telegram.svg"  alt="Image 1" class="footer-image">
+            </a>
+        </span>
+
+        <span>
+            <a href="https://github.com/YaroslavZuban">
+                <img th:src="@{/image/github.svg}" src="../static/image/github.svg" alt="Image 2" class="footer-image">
+            </a>
+        </span>
+        <span>
+            <a href="https://vk.com/zuban7029">
+                <img th:src="@{/image/vk.svg}" src="../static/image/vk.svg" alt="Image 3" class="footer-image">
+            </a>
+        </span>
+    </div>
+</footer>
 </body>
 </html>

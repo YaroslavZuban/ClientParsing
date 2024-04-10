@@ -70,6 +70,7 @@ public class PersonDataController {
         model.addAttribute("workSchedules", workSchedules);
         model.addAttribute("citizenship", citizenship);
         model.addAttribute("educationLevel", educationLevel);
+        model.addAttribute("pageNumber", pageNumber);
 
         return "fpmi/resume/list";
     }

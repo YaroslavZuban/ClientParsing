@@ -1,0 +1,55 @@
+/* Стили для шапки сайта */
+.header {
+    background-color: #262626; /* Цвет фона шапки */
+    padding: 20px; /* Внутренние отступы */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень */
+    text-align: center; /* Центрирование содержимого */
+    border-radius: 20px; /* Закругление углов */
+}
+
+/* Стили для логотипа в шапке */
+.header-logo img,
+.search-text {
+    width: 40px; /* Ширина логотипа */
+    height: auto; /* Автоматическая высота */
+    margin-right: 20px; /* Отступ справа от логотипа */
+    vertical-align: middle; /* Выравнивание по вертикали */
+    transition: transform 0.3s ease, color 0.3s ease; /* Плавное изменение масштаба и цвета */
+}
+
+/* Стили для текста "Поиск соискателей" */
+.search-text {
+    font-size: 18px; /* Размер текста */
+    color: #ffffff; /* Цвет текста */
+    font-family: 'Roboto', sans-serif; /* Используем шрифт с красивым почерком */
+    display: inline-block; /* Превращаем в строчный блок */
+    vertical-align: middle; /* Выравнивание по вертикали */
+    white-space: nowrap; /* Запрещаем перенос текста на новую строку */
+}
+
+/* Увеличение размера текста и изображения, а также изменение цвета при наведении */
+.header:hover .header-logo img,
+.header:hover .search-text {
+    transform: scale(1.4); /* Увеличиваем масштаб на 10% */
+    color: #0FB55F; /* Изменяем цвет при наведении */
+}
+
+.page-buttons {
+    margin-block-start: 20px; /* Добавляем верхний отступ */
+    margin-bottom: 20px; /* Добавляем отступ снизу */
+    margin-block-end: auto;
+    display: flex;
+    justify-content: space-evenly; /* Выравниваем кнопки по центру */
+}
+
+
+.page-link {
+    color: white; /* Белый цвет текста */
+    text-decoration: none; /* Убираем подчеркивание */
+    transition: color 0.3s, font-size 0.3s; /* Анимация изменения цвета и размера шрифта */
+}
+
+.page-link:hover {
+    color: #0FB55F; /* Зеленый цвет текста при наведении */
+    font-size: 1.2em; /* Увеличение размера шрифта при наведении */
+}

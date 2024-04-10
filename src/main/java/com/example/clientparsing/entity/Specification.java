@@ -11,15 +11,10 @@ import java.util.List;
 @Setter
 @ToString
 public class Specification {
-
     private int id;
-
     private int ending;
-
     private String educationalInstitution;
-
     private String direction;
-
     private EducationType educationType;
 
     @JsonIgnore
