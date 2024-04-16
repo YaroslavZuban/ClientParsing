@@ -1,5 +1,3 @@
-@charset "utf-8";
-
 /* Стили для обертки кнопок */
 .button-wrapper {
     display: flex;
@@ -9,9 +7,9 @@
 }
 
 /* Стили для контейнера овала */
-.oval-container {
+.oval-container-analysis {
     display: block;
-    border: 2px solid #4CAF50;
+    border: 2px solid #0FB55F;
     border-radius: 50px;
     position: relative; /* Позиционирование элемента относительно его родителя */
 }
@@ -19,9 +17,9 @@
 /* Стили для кнопок внутри овала */
 .custom-button {
     background-color: transparent; /* Прозрачный цвет фона */
-    color: #4CAF50; /* Черный цвет текста */
+    color: #0FB55F; /* Зеленый цвет текста */
     padding: 10px 20px; /* Внутренние отступы */
-    border: 2px solid #4CAF50; /* Зеленая обводка */
+    border: 2px solid #0FB55F; /* Зеленая обводка */
     border-radius: 50px; /* Создание овальной формы */
     cursor: pointer; /* Изменяем курсор при наведении */
     margin: 10px;
@@ -29,16 +27,45 @@
 }
 
 /* Стили для текста "Анализ" на контуре овала */
-.oval-container::after {
+.oval-container-analysis::after {
     content: "Анализ"; /* Добавляем текстовое содержимое */
     position: absolute; /* Абсолютное позиционирование */
     top: -20px; /* Положение по вертикали с учетом смещения вверх */
     left: 50%; /* Положение по горизонтали */
     transform: translateX(-50%); /* Центрирование по горизонтали */
-    color: #4CAF50; /* Зеленый цвет текста */
+    color: #0FB55F; /* Зеленый цвет текста */
     font-size: 14px; /* Размер шрифта */
     font-weight: bold; /* Жирный шрифт */
     white-space: nowrap; /* Предотвращаем перенос текста на новую строку */
+}
+
+/* Стили для контейнера кнопок "Очистить" и "Поиск" */
+.clear-search-buttons {
+    display: block;
+    border: 2px solid #0FB55F;
+    border-radius: 50px;
+    cursor: pointer; /* Изменяем курсор при наведении */
+    align-items: center; /* Выравнивание элементов по вертикали */
+}
+
+/* Стили для текста "Действие" на контуре овала */
+.clear-search-buttons::after {
+    content: "Действие"; /* Добавляем текстовое содержимое */
+    position: absolute; /* Абсолютное позиционирование */
+    top: -20px; /* Положение по вертикали с учетом смещения вверх */
+    left: 50%; /* Положение по горизонтали */
+    transform: translateX(-50%); /* Центрирование по горизонтали */
+    color: #0FB55F; /* Зеленый цвет текста */
+    font-size: 14px; /* Размер шрифта */
+    font-weight: bold; /* Жирный шрифт */
+    white-space: nowrap; /* Предотвращаем перенос текста на новую строку */
+}
+
+/* Стили для наведения на кнопки в контейнере "Очистить" и "Поиск" */
+.clear-search-buttons .custom-button:hover {
+    background-color: #0FB55F; /* Зеленый цвет фона */
+    color: white; /* Белый цвет текста */
+    transform: scale(1.2); /* Увеличиваем размер кнопки при наведении */
 }
 
 /* Стили для наведения на кнопки */

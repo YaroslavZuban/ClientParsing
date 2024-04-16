@@ -29,7 +29,7 @@ function addInput() {
     var newInput = document.createElement("input");
     newInput.className = "input";
     newInput.type = "text";
-    newInput.placeholder = "Скилл";
+    newInput.placeholder = "Skill";
 
     // Добавляем новый input в новый div
     newDiv.appendChild(newInput);

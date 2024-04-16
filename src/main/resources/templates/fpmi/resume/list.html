@@ -125,7 +125,7 @@
         <br>
 
         <div class="button-add">
-            <button onclick="addInput()" class="custom-button">+</button>
+            <button onclick="addInput()" class="custom-button">Добавить новый навык</button>
             <script type="text/javascript" th:src="@{/js/addInput.js}"></script>
         </div>
         <br>
@@ -133,14 +133,17 @@
 </div>
 
 <div class="button-wrapper">
-    <div class="oval-container">
+    <div class="oval-container-analysis">
         <button class="custom-button">Навыков</button>
         <button class="custom-button">Зарплаты</button>
         <button class="custom-button">График работы</button>
     </div>
-    <button class="custom-button">Очистить</button>
-    <button class="custom-button">Поиск</button>
+    <div class="clear-search-buttons">
+        <button class="custom-button">Очистить</button>
+        <button class="custom-button">Поиск</button>
+    </div>
 </div>
+
 
 <div th:if="${not #lists.isEmpty(resumes)}">
     <div th:each="resume : ${resumes}" class="person-data">
