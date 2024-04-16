@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+/* Стили для обертки кнопок */
+.button-wrapper {
+    display: flex;
+    justify-content: space-between; /* Распределение кнопок равномерно по ширине */
+    margin: auto; /* Центрирование по горизонтали */
+    width: 50%; /* Ширина обертки кнопок, можно настроить по вашему усмотрению */
+}
+
+/* Стили для контейнера овала */
+.oval-container {
+    display: block;
+    border: 2px solid #4CAF50;
+    border-radius: 50px;
+    position: relative; /* Позиционирование элемента относительно его родителя */
+}
+
+/* Стили для кнопок внутри овала */
+.custom-button {
+    background-color: transparent; /* Прозрачный цвет фона */
+    color: #4CAF50; /* Черный цвет текста */
+    padding: 10px 20px; /* Внутренние отступы */
+    border: 2px solid #4CAF50; /* Зеленая обводка */
+    border-radius: 50px; /* Создание овальной формы */
+    cursor: pointer; /* Изменяем курсор при наведении */
+    margin: 10px;
+    transition: background-color 0.3s, transform 0.3s, color 0.3s; /* Плавные анимации для цвета фона, масштаба и цвета текста */
+}
+
+/* Стили для текста "Анализ" на контуре овала */
+.oval-container::after {
+    content: "Анализ"; /* Добавляем текстовое содержимое */
+    position: absolute; /* Абсолютное позиционирование */
+    top: -20px; /* Положение по вертикали с учетом смещения вверх */
+    left: 50%; /* Положение по горизонтали */
+    transform: translateX(-50%); /* Центрирование по горизонтали */
+    color: #4CAF50; /* Зеленый цвет текста */
+    font-size: 14px; /* Размер шрифта */
+    font-weight: bold; /* Жирный шрифт */
+    white-space: nowrap; /* Предотвращаем перенос текста на новую строку */
+}
+
+/* Стили для наведения на кнопки */
+.custom-button:hover {
+    background-color: #4CAF50; /* Зеленый цвет фона */
+    color: white; /* Белый цвет текста */
+    transform: scale(1.2); /* Увеличиваем размер кнопки при наведении */
+}

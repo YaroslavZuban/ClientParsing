@@ -2,7 +2,8 @@
 .filter-wrapper {
     margin-top: 25px; /* Отступ сверху */
     display: flex;
-    justify-content: center; /* Выравнивание по центру */
+    justify-content: space-evenly; /* Выравнивание по центру */
+    justify-items: stretch;
 }
 
 /* Стили для панели фильтра */
@@ -49,8 +50,8 @@
     -webkit-appearance: none; /* Для Safari */
     -moz-appearance: none; /* Для Firefox */
     background-color: #0FB55F; /* Зеленый цвет фона */
-    width: 16px; /* Ширина */
-    height: 16px; /* Высота */
+    width: 12px; /* Ширина */
+    height: 12px; /* Высота */
     border-radius: 3px; /* Закругление углов */
     margin-right: 5px; /* Отступ справа */
     vertical-align: middle; /* Выравнивание по вертикали */
@@ -109,6 +110,31 @@
     order: 8;
 }
 
+.educational-filter {
+    order: 9;
+}
+
+.specialization-filter {
+    order: 10;
+}
+
+.graduation-year-filter {
+    order: 11;
+}
+
+.view {
+    order: 12;
+}
+
+.button-add {
+    text-align: center;
+    order: 13;
+}
+
+.search-button{
+    order: 20;
+}
+
 /* Стили для выпадающего списка */
 select {
     appearance: none; /* Убираем стандартное отображение (не работает во всех браузерах) */
@@ -119,7 +145,7 @@ select {
     padding: 8px 10px; /* Внутренние отступы */
     border: 1px solid #ccc; /* Обводка */
     border-radius: 4px; /* Закругление углов */
-    width: 50%; /* Ширина */
+    width: 75%; /* Ширина */
     font-size: 14px; /* Размер шрифта */
     cursor: pointer; /* Изменение курсора при наведении */
 }
@@ -127,4 +153,69 @@ select {
 /* Стили при наведении на выпадающий список */
 select:hover {
     border-color: #666; /* Изменение цвета обводки */
+}
+
+/* Стили для ввода текста */
+.input {
+    background-color: #fff; /* Цвет фона */
+    color: #333; /* Цвет текста */
+    padding: 8px 10px; /* Внутренние отступы */
+    border: 1px solid #ccc; /* Обводка */
+    border-radius: 4px; /* Закругление углов */
+    width: 65%; /* Ширина */
+    font-size: 14px; /* Размер шрифта */
+    cursor: pointer; /* Изменение курсора при наведении */
+}
+
+/* Стили при наведении на ввод текста */
+.input:hover {
+    border-color: #666; /* Изменение цвета обводки */
+}
+
+/* Стили для ввода текста */
+.input-write {
+    background-color: #fff; /* Цвет фона */
+    color: #333; /* Цвет текста */
+    padding: 8px 10px; /* Внутренние отступы */
+    border: 1px solid #ccc; /* Обводка */
+    border-radius: 4px; /* Закругление углов */
+    width: 65%; /* Ширина */
+    font-size: 14px; /* Размер шрифта */
+    cursor: pointer; /* Изменение курсора при наведении */
+}
+
+/* Стили при наведении на ввод текста */
+.input-write:hover {
+    border-color: #666; /* Изменение цвета обводки */
+}
+
+.custom-button {
+    background-color: #4CAF50; /* Зеленый цвет фона */
+    color: white; /* Белый цвет текста */
+    padding: 10px 20px; /* Внутренние отступы */
+    border: none; /* Убираем границу */
+    border-radius: 5px; /* Закругляем углы */
+    cursor: pointer; /* Изменяем курсор при наведении */
+    transition: background-color 0.3s, transform 0.3s; /* Плавные анимации для цвета фона и масштаба */
+    display: inline-block; /* Делаем кнопку блочным элементом */
+}
+
+.custom-button:hover {
+    background-color: #45a049; /* Зеленый цвет фона при наведении */
+    transform: scale(1.1); /* Увеличиваем размер кнопки при наведении */
+}
+
+/* Стили для черты */
+.separator {
+    border-top: 1px solid #ccc; /* Цвет черты */
+    margin: 20px auto; /* Отступы от верха и низа, автоматическое выравнивание по горизонтали */
+    width: 90%; /* Ширина черты */
+}
+
+/* Стили для текста */
+.title {
+    text-align: center; /* Выравнивание текста по центру */
+    color: #666; /* Цвет текста */
+    font-size: 18px; /* Размер шрифта */
+    margin-bottom: 20px; /* Отступ снизу */
 }

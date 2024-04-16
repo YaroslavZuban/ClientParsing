@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/static/css/header_styles.css" th:href="@{/css/header_styles.css}">
     <link rel="stylesheet" href="/static/css/basement.css" th:href="@{/css/basement.css}">
     <link rel="stylesheet" href="/static/css/filter.css" th:href="@{/css/filter.css}">
+    <link rel="stylesheet" href="/static/css/button.css" th:href="@{/css/button.css}">
 </head>
 <body>
 <div class="header">
@@ -33,7 +34,7 @@
         <div class="salary-filter">
             <label for="salary">Зарплата от</label>
             <br>
-            <input id="salary"><br>
+            <input class="input" id="salary"><br>
         </div>
         <br>
 
@@ -98,9 +99,48 @@
             </th:block>
         </div>
         <br>
+
+        <div class="educational-filter">
+            <label for="educational">Учебное заведение</label>
+            <br>
+            <input class="input" id="educational"><br>
+        </div>
+        <br>
+
+        <div class="specialization-filter">
+            <label for="specialization">Специальность</label>
+            <br>
+            <input class="input" id="specialization"><br>
+        </div>
+        <br>
+
+        <div class="graduation-year-filter">
+            <label for="graduation_year">Год окончания</label>
+            <br>
+            <input class="input" id="graduation_year"><br>
+        </div>
+        <br>
+
+        <div class="view"></div>
+        <br>
+
+        <div class="button-add">
+            <button onclick="addInput()" class="custom-button">+</button>
+            <script type="text/javascript" th:src="@{/js/addInput.js}"></script>
+        </div>
+        <br>
     </div>
 </div>
 
+<div class="button-wrapper">
+    <div class="oval-container">
+        <button class="custom-button">Навыков</button>
+        <button class="custom-button">Зарплаты</button>
+        <button class="custom-button">График работы</button>
+    </div>
+    <button class="custom-button">Очистить</button>
+    <button class="custom-button">Поиск</button>
+</div>
 
 <div th:if="${not #lists.isEmpty(resumes)}">
     <div th:each="resume : ${resumes}" class="person-data">
