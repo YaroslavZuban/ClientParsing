@@ -1,0 +1,130 @@
+/* Стили для обертки фильтра */
+.filter-wrapper {
+    margin-top: 25px; /* Отступ сверху */
+    display: flex;
+    justify-content: center; /* Выравнивание по центру */
+}
+
+/* Стили для панели фильтра */
+.filter-panel {
+    border: 1px solid transparent; /* Прозрачная рамка */
+    padding: 20px; /* Отступы внутри формочки */
+    margin: 20px auto 0; /* Отступ сверху, выравнивание по центру */
+    margin-bottom: 20px;
+    background-color: #262626; /* Цвет фона формочки */
+    transition: border-color 0.3s ease; /* Плавное изменение цвета рамки */
+    width: 50%; /* Ширина формочки (можете настроить по своему усмотрению) */
+    border-radius: 10px; /* Закругление углов */
+    display: flex; /* Отображение элементов в столбце */
+    flex-direction: row; /* Расположение элементов в столбце */
+    align-items: flex-start; /* Выравнивание элементов по левому краю */
+    flex-wrap: wrap; /* Разрешаем перенос элементов на новую строку */
+}
+
+/* Стили для блока фильтра */
+.filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Выравнивание по центру */
+}
+
+/* Стили для каждого блока фильтра */
+.filter > div {
+    margin: 0 10px; /* Внешние отступы между блоками */
+    flex-basis: 25%; /* Ширина блока в 25%, чтобы 4 блока поместились на строку */
+    margin-bottom: 20px; /* Добавляем отступ снизу, чтобы элементы не сливались друг с другом */
+}
+
+/* Стили для каждого блока фильтра, кроме последнего */
+.filter-panel > div:not(:last-child) {
+    margin-right: 0; /* Убираем правый отступ у последнего блока */
+    flex-basis: 25%; /* Ширина блока в 25%, чтобы 4 блока поместились на строку */
+    margin-bottom: 20px; /* Добавляем отступ снизу, чтобы элементы не сливались друг с другом */
+}
+
+/* Стили для радиокнопок и чекбоксов */
+.filter-panel input[type="checkbox"],
+.filter-panel input[type="radio"] {
+    appearance: none; /* Убираем стандартное отображение */
+    -webkit-appearance: none; /* Для Safari */
+    -moz-appearance: none; /* Для Firefox */
+    background-color: #0FB55F; /* Зеленый цвет фона */
+    width: 16px; /* Ширина */
+    height: 16px; /* Высота */
+    border-radius: 3px; /* Закругление углов */
+    margin-right: 5px; /* Отступ справа */
+    vertical-align: middle; /* Выравнивание по вертикали */
+    border: 2px solid #0FB55F; /* Обводка */
+}
+
+/* Стили для меток чекбоксов и радиокнопок */
+.filter-panel input[type="checkbox"] + label,
+.filter-panel input[type="radio"] + label {
+    display: inline-block; /* Отображаем как блочный элемент */
+    vertical-align: middle; /* Выравнивание по вертикали */
+}
+
+/* Стили для выбранного чекбокса и радиокнопки */
+.filter-panel input[type="checkbox"]:checked,
+.filter-panel input[type="radio"]:checked {
+    background-color: #ffffff; /* Цвет фона */
+}
+
+/* Стили для выбранного чекбокса и радиокнопки */
+.filter-panel input[type="checkbox"]:checked + label,
+.filter-panel input[type="radio"]:checked + label {
+    color: #0FB55F; /* Цвет текста */
+}
+
+/* Порядок блоков фильтров */
+.city-live-filter {
+    order: 1;
+}
+
+.salary-filter {
+    order: 2;
+}
+
+.foreign-language-filter {
+    order: 3;
+}
+
+.language-level-filter {
+    order: 4;
+}
+
+.education-filter {
+    order: 5;
+}
+
+.schedule-work-filter {
+    order: 6;
+}
+
+.rights-category-filter {
+    order: 7;
+}
+
+.floor-filter {
+    order: 8;
+}
+
+/* Стили для выпадающего списка */
+select {
+    appearance: none; /* Убираем стандартное отображение (не работает во всех браузерах) */
+    -webkit-appearance: none; /* Для Safari */
+    -moz-appearance: none; /* Для Firefox */
+    background-color: #fff; /* Цвет фона */
+    color: #333; /* Цвет текста */
+    padding: 8px 10px; /* Внутренние отступы */
+    border: 1px solid #ccc; /* Обводка */
+    border-radius: 4px; /* Закругление углов */
+    width: 50%; /* Ширина */
+    font-size: 14px; /* Размер шрифта */
+    cursor: pointer; /* Изменение курсора при наведении */
+}
+
+/* Стили при наведении на выпадающий список */
+select:hover {
+    border-color: #666; /* Изменение цвета обводки */
+}

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/static/css/resume_list.css" th:href="@{/css/resume_list.css}">
     <link rel="stylesheet" href="/static/css/header_styles.css" th:href="@{/css/header_styles.css}">
     <link rel="stylesheet" href="/static/css/basement.css" th:href="@{/css/basement.css}">
+    <link rel="stylesheet" href="/static/css/filter.css" th:href="@{/css/filter.css}">
 </head>
 <body>
 <div class="header">
@@ -14,6 +15,92 @@
         <span class="search-text">Поиск соискателей</span>
     </div>
 </div>
+
+<div class="filter-wrapper">
+    <div class="filter-panel">
+        <div class="city-live-filter">
+            <label for="city">Город проживания</label>
+            <br>
+            <select id="city" name="city">
+                <option value="">Выберите город</option>
+                <th:block th:each="c : ${city}">
+                    <option th:value="${c}" th:text="${c}"></option>
+                </th:block>
+            </select>
+        </div>
+        <br>
+
+        <div class="salary-filter">
+            <label for="salary">Зарплата от</label>
+            <br>
+            <input id="salary"><br>
+        </div>
+        <br>
+
+        <div class="foreign-language-filter">
+            <label for="foreign-language">Иностранный язык</label>
+            <br>
+            <select id="foreign-language" name="foreignLanguage">
+                <option value="">Выберите язык</option>
+                <th:block th:each="f : ${foreignLanguage}">
+                    <option th:value="${f}" th:text="${f}"></option>
+                </th:block>
+            </select>
+        </div>
+        <br>
+
+        <div class="language-level-filter">
+            <label for="language-level">Уровень языка</label>
+            <br>
+            <select id="language-level" name="languageLevel">
+                <option value="">Выберите уровень</option>
+                <th:block th:each="l : ${languageLevel}">
+                    <option th:value="${l}" th:text="${l}"></option>
+                </th:block>
+            </select>
+        </div>
+        <br>
+
+        <div class="education-filter">
+            <label>Образование</label><br>
+            <th:block th:each="edu : ${education}">
+                <input type="checkbox" th:id="'education_' + ${edu}" th:name="'education'" th:value="${edu}">
+                <label th:for="'education_' + ${edu}" th:text="${edu}"></label><br>
+            </th:block>
+        </div>
+        <br>
+
+        <div class="schedule-work-filter">
+            <label>График работы</label><br>
+            <th:block th:each="schedule : ${scheduleWork}">
+                <input type="checkbox" th:id="'schedule_work_' + ${schedule}" th:name="'schedule_work'" th:value="${schedule}">
+                <label th:for="'schedule_work_' + ${schedule}" th:text="${schedule}"></label><br>
+            </th:block>
+        </div>
+        <br>
+
+        <div class="rights-category-filter">
+            <label>Категория прав</label><br>
+            <th:block th:each="rights : ${rightsCategory}">
+                <input type="checkbox" th:id="'rights_category_' + ${rights}" th:name="'rights_category'" th:value="${rights}">
+                <label th:for="'rights_category_' + ${rights}" th:text="${rights}"></label><br>
+            </th:block>
+        </div>
+        <br>
+
+        <div class="floor-filter">
+            <label>Пол</label><br>
+            <input type="radio" id="floor_any" name="floor" value="" checked>
+            <label for="floor_any">Любой пол</label><br>
+            <th:block th:each="f : ${floor}">
+                <input type="radio" th:id="'floor_' + ${f}" name="floor" th:value="${f}">
+                <label th:for="'floor_' + ${f}" th:text="${f}"></label><br>
+            </th:block>
+        </div>
+        <br>
+    </div>
+</div>
+
 
 <div th:if="${not #lists.isEmpty(resumes)}">
     <div th:each="resume : ${resumes}" class="person-data">
@@ -29,8 +116,9 @@
         </div>
         <div class="text">
             <span class="label">Навыки:</span>
-            <span th:if="${resume.skills != null}"
-                  th:text="${resume.skills.substring(0, resume.skills.lastIndexOf(' ', 200))} + '...'"></span>
+            <span th:if="${resume.skills != null}">
+                    <span th:utext="${#strings.length(resume.skills) &lt;= 200 ? resume.skills : resume.skills.substring(0, 200) + '...'}"></span>
+            </span>
             <span th:unless="${resume.skills != null}">Не известно</span>
         </div>
     </div>
@@ -53,7 +141,8 @@
     <div class="footer-images">
         <span>
             <a href="https://t.me/JaroslavZuban">
-                <img th:src="@{/image/telegram.svg}" src="../static/image/telegram.svg"  alt="Image 1" class="footer-image">
+                <img th:src="@{/image/telegram.svg}" src="../static/image/telegram.svg" alt="Image 1"
+                     class="footer-image">
             </a>
         </span>
 
