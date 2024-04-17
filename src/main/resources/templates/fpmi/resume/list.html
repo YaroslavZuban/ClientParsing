@@ -41,9 +41,9 @@
         <div class="foreign-language-filter">
             <label for="foreign-language">Иностранный язык</label>
             <br>
-            <select id="foreign-language" name="foreignLanguage">
+            <select id="foreign-language" name="foreign_language">
                 <option value="">Выберите язык</option>
-                <th:block th:each="f : ${foreignLanguage}">
+                <th:block th:each="f : ${foreign_language}">
                     <option th:value="${f}" th:text="${f}"></option>
                 </th:block>
             </select>
@@ -53,9 +53,9 @@
         <div class="language-level-filter">
             <label for="language-level">Уровень языка</label>
             <br>
-            <select id="language-level" name="languageLevel">
+            <select id="language-level" name="language_level">
                 <option value="">Выберите уровень</option>
-                <th:block th:each="l : ${languageLevel}">
+                <th:block th:each="l : ${language_level}">
                     <option th:value="${l}" th:text="${l}"></option>
                 </th:block>
             </select>
@@ -73,7 +73,7 @@
 
         <div class="schedule-work-filter">
             <label>График работы</label><br>
-            <th:block th:each="schedule : ${scheduleWork}">
+            <th:block th:each="schedule : ${schedule_work}">
                 <input type="checkbox" th:id="'schedule_work_' + ${schedule}" th:name="'schedule_work'" th:value="${schedule}">
                 <label th:for="'schedule_work_' + ${schedule}" th:text="${schedule}"></label><br>
             </th:block>
@@ -82,7 +82,7 @@
 
         <div class="rights-category-filter">
             <label>Категория прав</label><br>
-            <th:block th:each="rights : ${rightsCategory}">
+            <th:block th:each="rights : ${rights_category}">
                 <input type="checkbox" th:id="'rights_category_' + ${rights}" th:name="'rights_category'" th:value="${rights}">
                 <label th:for="'rights_category_' + ${rights}" th:text="${rights}"></label><br>
             </th:block>

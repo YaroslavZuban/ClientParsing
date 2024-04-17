@@ -1,5 +1,6 @@
 package com.example.clientparsing.controller;
 
+import com.example.clientparsing.client.DataRestClient;
 import com.example.clientparsing.client.ResumeRestClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import java.util.List;
 @RequestMapping("fpmi/resume")
 public class PersonDataController {
     private final ResumeRestClient restClient;
+    private final DataRestClient dataRestClient;
 
     @GetMapping("list")
     public String getResumesList(Model model,
@@ -62,7 +64,6 @@ public class PersonDataController {
         model.addAttribute("workSchedules", workSchedules);
         model.addAttribute("rightsCategory", rightsCategory);
         model.addAttribute("businessTrips", businessTrips);
-
         model.addAttribute("educationalInstitution", educationalInstitution);
         model.addAttribute("specialization", specialization);
         model.addAttribute("graduationYear", graduationYear);
@@ -71,6 +72,15 @@ public class PersonDataController {
         model.addAttribute("citizenship", citizenship);
         model.addAttribute("educationLevel", educationLevel);
         model.addAttribute("pageNumber", pageNumber);
+
+        // Данные фильтры
+        model.addAttribute("city", dataRestClient.getCityAll());
+        model.addAttribute("foreign_language", dataRestClient.getLanguageAll());
+        model.addAttribute("language_level", dataRestClient.getLanguageLevel());
+        model.addAttribute("education", dataRestClient.getEducationLevelAll());
+        model.addAttribute("schedule_work", dataRestClient.getWortTypeAll());
+        model.addAttribute("rights_category", dataRestClient.getLicenceCategoryAll());
+        model.addAttribute("floor", dataRestClient.getGenderAll());
 
         return "fpmi/resume/list";
     }
