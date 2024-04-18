@@ -59,20 +59,28 @@ public class RestClientResumeRestClient implements ResumeRestClient {
                         wages,
                         foreignLanguage,
                         foreignLanguageLevel,
-                        educations,
+                        lineJoin(educations),
                         gender,
-                        workSchedules,
-                        rightsCategory,
-                        businessTrips,
+                        lineJoin(workSchedules),
+                        lineJoin(rightsCategory),
+                        lineJoin(businessTrips),
                         educationalInstitution,
                         specialization,
                         graduationYear,
-                        skills,
-                        citizenship,
+                        lineJoin(skills),
+                        lineJoin(citizenship),
                         educationLevel,
                         pageNumber)
                 .retrieve()
                 .body(RESUME_TYPE_REFERENCE);
+    }
+
+    private String lineJoin(List<String> list){
+        if(list!=null){
+            return String.join(",",list);
+        }
+
+        return null;
     }
 
     @Override

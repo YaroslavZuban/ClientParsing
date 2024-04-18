@@ -20,22 +20,22 @@ public class PersonDataController {
 
     @GetMapping("list")
     public String getResumesList(Model model,
-                                 @RequestParam(value = "cityResidence", required = false) String cityResidence,
-                                 @RequestParam(value = "wages", required = false) Integer wages,
-                                 @RequestParam(value = "foreignLanguage", required = false) String foreignLanguage,
-                                 @RequestParam(value = "foreignLanguageLevel", required = false) String foreignLanguageLevel,
-                                 @RequestParam(value = "educations", required = false) List<String> educations,
-                                 @RequestParam(value = "gender", required = false) String gender,
-                                 @RequestParam(value = "workSchedules", required = false) List<String> workSchedules,
-                                 @RequestParam(value = "rightsCategory", required = false) List<String> rightsCategory,
-                                 @RequestParam(value = "businessTrips", required = false) List<String> businessTrips,
-                                 @RequestParam(value = "educationalInstitution", required = false) String educationalInstitution,
-                                 @RequestParam(value = "specialization", required = false) String specialization,
-                                 @RequestParam(value = "graduationYear", required = false) Integer graduationYear,
-                                 @RequestParam(value = "skills", required = false) List<String> skills,
-                                 @RequestParam(value = "citizenship", required = false) List<String> citizenship,
-                                 @RequestParam(value = "educationLevel", required = false) String educationLevel,
-                                 @RequestParam(defaultValue = "1", required = false) int pageNumber) {
+                                 @RequestParam(value = "cityResidence", required = false) String cityResidence, // Город проживания
+                                 @RequestParam(value = "wages", required = false) Integer wages, // Зарплата
+                                 @RequestParam(value = "foreignLanguage", required = false) String foreignLanguage, // Иностранный язык
+                                 @RequestParam(value = "foreignLanguageLevel", required = false) String foreignLanguageLevel, // Уровень иностранного языка
+                                 @RequestParam(value = "educations", required = false) List<String> educations, //
+                                 @RequestParam(value = "gender", required = false) String gender, // Пол
+                                 @RequestParam(value = "workSchedules", required = false) List<String> workSchedules, // График работы
+                                 @RequestParam(value = "rightsCategory", required = false) List<String> rightsCategory, // Категория прав
+                                 @RequestParam(value = "businessTrips", required = false) List<String> businessTrips, // Командировки
+                                 @RequestParam(value = "educationalInstitution", required = false) String educationalInstitution, // Учебное заведение
+                                 @RequestParam(value = "specialization", required = false) String specialization, // Специализация
+                                 @RequestParam(value = "graduationYear", required = false) Integer graduationYear, // Год выпуска
+                                 @RequestParam(value = "skills", required = false) List<String> skills, // Навыки
+                                 @RequestParam(value = "citizenship", required = false) List<String> citizenship, // Гражданство
+                                 @RequestParam(value = "educationLevel", required = false) String educationLevel, // Уровень образования
+                                 @RequestParam(defaultValue = "1", required = false) int pageNumber) { // Страница
         model.addAttribute("resumes", this.restClient.findAllResumeDto(
                 cityResidence,
                 wages,

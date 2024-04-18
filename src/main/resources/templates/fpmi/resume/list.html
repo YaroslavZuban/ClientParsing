@@ -34,7 +34,7 @@
         <div class="salary-filter">
             <label for="salary">Зарплата от</label>
             <br>
-            <input class="input" id="salary"><br>
+            <input type="number" class="input" id="salary"><br>
         </div>
         <br>
 
@@ -117,7 +117,7 @@
         <div class="graduation-year-filter">
             <label for="graduation_year">Год окончания</label>
             <br>
-            <input class="input" id="graduation_year"><br>
+            <input type="number" class="input" id="graduation_year"><br>
         </div>
         <br>
 
@@ -140,7 +140,9 @@
     </div>
     <div class="clear-search-buttons">
         <button class="custom-button">Очистить</button>
-        <button class="custom-button">Поиск</button>
+        <button id="applyFilterButton" class="custom-button">Поиск</button>
+        <script type="text/javascript" th:src="@{/js/search.js}"></script>
+        <script type="text/javascript" th:src="@{/js/serialize.js}"></script>
     </div>
 </div>
 
