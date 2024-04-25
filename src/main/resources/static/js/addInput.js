@@ -7,7 +7,7 @@ function addInput() {
         // ѕровер€ем, содержит ли input в существующем div значение
         var inputs = existingDiv.querySelectorAll(".input");
         var isEmpty = true;
-        inputs.forEach(function(input) {
+        inputs.forEach(function (input) {
             if (input.value.trim() !== "") {
                 isEmpty = false;
             }

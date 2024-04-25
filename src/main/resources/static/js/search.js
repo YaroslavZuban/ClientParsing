@@ -46,7 +46,6 @@ function generateFilterUrl() {
     // ƒобавление параметров к URL
     addParameter("cityResidence", cityResidence);
     addParameter("wages", wages);
-    addParameter("cityResidence", cityResidence);
     addParameter("foreignLanguage", foreignLanguage);
     addParameter("foreignLanguageLevel", foreignLanguageLevel);
     addParameter("educationalInstitution", educationalInstitution);
@@ -54,11 +53,29 @@ function generateFilterUrl() {
     addParameter("graduationYear", graduationYear);
     addParameter("educationLevel", educationLevel);
 
+
+    var skills = [];
+
+    // Ќаходим все элементы с классом "input"
+    var inputs = document.querySelectorAll(".input");
+
+    // ѕроходим по каждому найденному элементу и добавл€ем его значение в массив навыков
+    inputs.forEach(function(input) {
+        // ѕолучаем значение input и убираем лишние пробелы в начале и конце строки
+        var skill = input.value.trim();
+
+        // ѕровер€ем, что значение навыка не пустое, перед добавлением его в массив
+        if (skill !== "") {
+            skills.push(skill);
+        }
+    });
+
+
 // ѕолучение выбранных значений списков и удаление квадратных скобок
     var educations = Array.from(document.querySelectorAll('input[name="education"]:checked')).map(input => input.value).join(',');
     var workSchedules = Array.from(document.querySelectorAll('input[name="schedule_work"]:checked')).map(input => input.value).join(',');
     var rightsCategory = Array.from(document.querySelectorAll('input[name="rights_category"]:checked')).map(input => input.value).join(',');
-    var skills = Array.from(document.querySelectorAll('.skill-input')).map(input => input.value).join(',');
+   // var skills = Array.from(document.querySelectorAll('.input')).map(input => input.value).join(','); // нужно пон€ть почему не считываетс€
     var citizenship = Array.from(document.querySelectorAll('input[name="citizenship"]:checked')).map(input => input.value).join(',');
     var gender = document.querySelectorAll('input[name="schedule_work"]:checked').value;
 
