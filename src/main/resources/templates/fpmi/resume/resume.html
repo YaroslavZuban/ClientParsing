@@ -151,7 +151,7 @@
         <div th:if="${resume.getInformation().getLanguages() != null and resume.getInformation().getLevels() != null}">
             <strong>Иностранные языки:</strong>
             <div th:each="language, index : ${resume.getInformation().getLanguages()}">
-                <span th:text="|${language.getName()} (${resume.getInformation().getLevels().get(index.index)})|"></span>
+                <span th:text="|${language.getName()} (${resume.getInformation().getLevels().get(index.index).getKnowledgeLevel()})|"></span>
                 <span th:if="${!index.last}">,</span>
             </div>
         </div>
