@@ -25,5 +25,5 @@ public interface ResumeRestClient {
                                          String educationLevel,
                                          int pageNumber);
 
-    Optional<PersonalData> findPersonData(int resumeId);
+    PersonalData findPersonData(int resumeId);
 }

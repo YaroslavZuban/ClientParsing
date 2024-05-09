@@ -74,7 +74,8 @@
         <div class="schedule-work-filter">
             <label>График работы</label><br>
             <th:block th:each="schedule : ${schedule_work}">
-                <input type="checkbox" th:id="'schedule_work_' + ${schedule}" th:name="'schedule_work'" th:value="${schedule}">
+                <input type="checkbox" th:id="'schedule_work_' + ${schedule}" th:name="'schedule_work'"
+                       th:value="${schedule}">
                 <label th:for="'schedule_work_' + ${schedule}" th:text="${schedule}"></label><br>
             </th:block>
         </div>
@@ -83,7 +84,8 @@
         <div class="rights-category-filter">
             <label>Категория прав</label><br>
             <th:block th:each="rights : ${rights_category}">
-                <input type="checkbox" th:id="'rights_category_' + ${rights}" th:name="'rights_category'" th:value="${rights}">
+                <input type="checkbox" th:id="'rights_category_' + ${rights}" th:name="'rights_category'"
+                       th:value="${rights}">
                 <label th:for="'rights_category_' + ${rights}" th:text="${rights}"></label><br>
             </th:block>
         </div>
@@ -134,9 +136,11 @@
 
 <div class="button-wrapper">
     <div class="oval-container-analysis">
-        <button class="custom-button">Навыков</button>
-        <button class="custom-button">Зарплаты</button>
-        <button class="custom-button">График работы</button>
+        <button id="buttonAnalyticsUniversity" class="custom-button" onclick="">По знаниям</button>
+        <script type="text/javascript" th:src="@{/js/buttonAnalyticsUniversity.js}"></script>
+
+        <button class="custom-button" onclick="">По специальности</button>
+        <button class="custom-button" onclick="">По году специальности</button>
     </div>
     <div class="clear-search-buttons">
         <button id="clearFilterAndUrl" class="custom-button">Очистить</button>
@@ -144,12 +148,13 @@
         <script type="text/javascript" th:src="@{/js/search.js}"></script>
         <script type="text/javascript" th:src="@{/js/serialize.js}"></script>
         <script type="text/javascript" th:src="@{/js/clear.js}"></script>
+        <script type="text/javascript" th:src="@{/js/openResume.js}"></script>
     </div>
 </div>
 
 
 <div th:if="${not #lists.isEmpty(resumes)}">
-    <div th:each="resume : ${resumes}" class="person-data">
+    <div th:each="resume : ${resumes}" th:attr="resumeId=${resume.id()}" class="person-data" th:href="@{/fpmi/resume/{resumeId}(resumeId=${resume.id()})}" onclick="openWindow(this)" id="window_id">
         <div class="resume-title">
             <span th:text="${#strings.length(resume.title) > 60 ? #strings.substring(resume.title, 0, 50) + '...' : resume.title}"></span>
 

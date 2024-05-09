@@ -84,14 +84,14 @@ public class RestClientResumeRestClient implements ResumeRestClient {
     }
 
     @Override
-    public Optional<PersonalData> findPersonData(int resumeId) {
+    public PersonalData findPersonData(int resumeId) {
         try {
-            return Optional.ofNullable(this.restClient.get()
+            return this.restClient.get()
                     .uri("http://localhost:8081/resume-api/resume/{resumeId}", resumeId)
                     .retrieve()
-                    .body(PersonalData.class));
+                    .body(PersonalData.class);
         } catch (HttpClientErrorException.NotFound exception) {
-            return Optional.empty();
+            return null;
         }
     }
 }

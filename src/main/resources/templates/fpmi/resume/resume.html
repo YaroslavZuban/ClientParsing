@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Соискатели</title>
+    <link rel="stylesheet" href="/static/css/resume_list.css" th:href="@{/css/resume_list.css}">
+    <link rel="stylesheet" href="/static/css/header_styles.css" th:href="@{/css/header_styles.css}">
+    <link rel="stylesheet" href="/static/css/basement.css" th:href="@{/css/basement.css}">
+    <link rel="stylesheet" href="/static/css/filter.css" th:href="@{/css/filter.css}">
+    <link rel="stylesheet" href="/static/css/button.css" th:href="@{/css/button.css}">
+</head>
+<body>
+<div class="header">
+    <div class="header-logo">
+        <img src="/static/image/logo.png" th:src="@{/image/logo.png}" alt="">
+        <span class="search-text">Поиск соискателей</span>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="footer-images">
+        <span>
+            <a href="https://t.me/JaroslavZuban">
+                <img th:src="@{/image/telegram.svg}" src="../static/image/telegram.svg" alt="Image 1"
+                     class="footer-image">
+            </a>
+        </span>
+
+        <span>
+            <a href="https://github.com/YaroslavZuban">
+                <img th:src="@{/image/github.svg}" src="../static/image/github.svg" alt="Image 2" class="footer-image">
+            </a>
+        </span>
+        <span>
+            <a href="https://vk.com/zuban7029">
+                <img th:src="@{/image/vk.svg}" src="../static/image/vk.svg" alt="Image 3" class="footer-image">
+            </a>
+        </span>
+    </div>
+</footer>
+</body>
+</html>

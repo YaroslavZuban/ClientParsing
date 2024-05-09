@@ -1,5 +1,7 @@
 package com.example.clientparsing.config;
 
+import com.example.clientparsing.client.AnalyticsFileRestClient;
+import com.example.clientparsing.client.AnalyticsFileRestClientImpl;
 import com.example.clientparsing.client.DataRestClientImpl;
 import com.example.clientparsing.client.RestClientResumeRestClient;
 import org.springframework.context.annotation.Bean;
@@ -18,6 +20,13 @@ public class ClientBeans {
     @Bean
     public DataRestClientImpl dataRestClient() {
         return new DataRestClientImpl(RestClient.builder()
+                .baseUrl("http://localhost:8081")
+                .build());
+    }
+
+    @Bean
+    public AnalyticsFileRestClientImpl analyticsFileRestClient() {
+        return new AnalyticsFileRestClientImpl(RestClient.builder()
                 .baseUrl("http://localhost:8081")
                 .build());
     }

@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -85,8 +86,10 @@ public class PersonDataController {
         return "fpmi/resume/list";
     }
 
-    @GetMapping("/{resumeId:\\d+}")
-    public String getResume() {
-        return null;
+    @GetMapping("{resumeId:\\d+}")
+    public String getResume(@PathVariable("resumeId") int resumeId, Model model) {
+        model.addAttribute("resume",this.restClient.findPersonData(resumeId));
+
+        return "fpmi/resume/resume";
     }
 }
