@@ -17,6 +17,161 @@
     </div>
 </div>
 
+<div th:if="${resume != null}">
+    <div class="person-data-resume">
+        <div>
+            <strong>Имя:</strong>
+            <span th:text="${resume.name}"></span>
+        </div>
+
+        <div th:if="${resume.getBirthData() != null}">
+            <strong>Дата рождения:</strong>
+            <span th:text="${resume.getBirthData()}"></span>
+        </div>
+
+        <div>
+            <strong>Вакансия:</strong>
+            <span th:text="${resume.title}"></span>
+        </div>
+
+        <div th:if="${resume.wages != null}">
+            <strong>Заработная плата:</strong>
+            <span th:text="'от ' + ${resume.wages} + ' рублей'"></span>
+        </div>
+        <div th:unless="${resume.wages != null}">
+            <strong>Заработная плата:</strong>
+            <span>Договорная</span>
+        </div>
+
+        <div th:if="${resume != null and resume.getGender() != null}">
+            <strong>Пол:</strong>
+            <span th:text="${resume.getGender().getType()}"></span>
+        </div>
+
+        <div th:if="${resume != null and resume.getHabitation() != null}">
+            <strong>Город проживания:</strong>
+            <span th:text="${resume.getHabitation().getCity()}"></span>
+        </div>
+
+        <div th:if="${resume.getWorkSchedule() != null}">
+            <strong>График работы:</strong>
+
+            <div th:each="work_schedule, work_stat : ${resume.getWorkSchedule()}">
+                <span th:text="${work_schedule.getWorkType()}"></span>
+                <span th:if="${!work_stat.last}">,</span>
+            </div>
+        </div>
+
+        <div th:if="${resume.getCitizenshipType() != null}">
+            <strong>Гражданство:</strong>
+
+            <div th:each="citizenship_type : ${resume.getCitizenshipType()}">
+                <span th:text="${citizenship_type.getName()}"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="work-history" th:if="${resume.getExperienceList() != null}">
+        <div class="title-work">
+            <div>
+                <h1>Опыт работы</h1>
+            </div>
+
+            <div th:each="work_history : ${resume.getExperienceList()}">
+                <div th:if="${work_history.getCompany() != null}">
+                    <strong>Компания:</strong>
+                    <span th:text="${work_history.getCompany()}"></span>
+                </div>
+
+                <div th:if="${work_history.getPost() != null}">
+                    <strong>Должность:</strong>
+                    <span th:text="${work_history.getPost()}"></span>
+                </div>
+
+                <div th:if="${work_history.getResponsibilities() != null}">
+                    <strong>Обязанности:</strong>
+                    <span th:text="${work_history.getResponsibilities()}"></span>
+                </div>
+
+                <div>
+                    <h3>------------------------</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="education_person" th:if="${resume.getSpecifications() != null}">
+        <div>
+            <h1>Образование</h1>
+        </div>
+
+        <div th:each="specification : ${resume.getSpecifications()}">
+            <div th:if="${specification.getEducationType() != null}">
+                <strong>Тип образования:</strong>
+                <span th:text="${specification.getEducationType().getEducationLevel()}"></span>
+            </div>
+
+            <div th:if="${specification.getEducationalInstitution() != null}">
+                <strong>Институт:</strong>
+                <span th:text="${specification.getEducationalInstitution()}"></span>
+            </div>
+
+            <div th:if="${specification.getDirection() != null}">
+                <strong>Специальность:</strong>
+                <span th:text="${specification.getDirection()}"></span>
+            </div>
+
+            <div th:if="${specification.getEnding() != null}">
+                <strong>Год окончания:</strong>
+                <span th:text="${specification.getEnding()}"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="information_person_data" th:if="${resume.getInformation() != null}">
+        <div>
+            <h1>Дополнительная информация</h1>
+        </div>
+
+        <div th:if="${resume.getInformation().getCourses() != null}">
+            <strong>Курсы:</strong>
+            <span th:text="${resume.getInformation().getCourses()}"></span>
+        </div>
+
+        <div th:if="${resume.getInformation().getSkills() != null}">
+            <strong>Навыки:</strong>
+            <span th:text="${resume.getInformation().getSkills()}"></span>
+        </div>
+
+        <div th:if="${resume.getInformation().getAboutMe() != null}">
+            <strong>Обо мне:</strong>
+            <span th:text="${resume.getInformation().getAboutMe()}"></span>
+        </div>
+
+        <div th:if="${resume.getInformation().getLanguages() != null and resume.getInformation().getLevels() != null}">
+            <strong>Иностранные языки:</strong>
+            <div th:each="language, index : ${resume.getInformation().getLanguages()}">
+                <span th:text="|${language.getName()} (${resume.getInformation().getLevels().get(index.index)})|"></span>
+                <span th:if="${!index.last}">,</span>
+            </div>
+        </div>
+
+        <div th:if="${resume.getInformation().getBusinessTrips() != null}">
+            <strong>Готовность к командировкам:</strong>
+            <span th:text="${resume.getInformation().getBusinessTrips().getReadiness()}"></span>
+        </div>
+
+        <div th:if="${resume.getInformation().getCategoryList() != null and !resume.getInformation().getCategoryList().isEmpty()}">
+            <strong>Вводительские права:</strong>
+
+            <div th:each="category, index : ${resume.getInformation().getCategoryList()}">
+                <span th:text="${category.getCategory()}"></span>
+                <span th:if="${!index.last}">,</span>
+            </div>
+        </div>
+    </div>
+</div>
+
 <footer class="site-footer">
     <div class="footer-images">
         <span>
