@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Отступы вокруг содержимого */
+}
+
+.island {
+    width: 100%;
+    max-width: 800px;
+    margin: 16px auto 0 auto;
+    padding: 20px;
+    background: #262626;
+    border-radius: 20px;
+    box-sizing: border-box;
+    color: #fff; /* Цвет текста внутри острова */
+}
+
+.field-wrapper {
+    margin-top: 16px; /* Увеличенный отступ для визуальной четкости */
+}
+
+.field-title {
+    display: inline-block;
+    width: 180px;
+    vertical-align: top;
+}
+
+.field-value {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.island-title {
+    text-align: center;
+    margin-bottom: 16px; /* Дополнительное пространство под заголовком */
+    font-size: 1.5em; /* Увеличенный размер шрифта для заголовка */
+}

@@ -6,13 +6,13 @@ body {
 
 /* Стили для формочки вакансии */
 .person-data {
+    width: 800px;
     border: 1px solid transparent; /* Прозрачная рамка */
     padding: 20px; /* Отступы внутри формочки */
     margin: 20px auto 0; /* Отступ сверху, выравнивание по центру */
     margin-bottom: 20px;
     background-color: #262626; /* Цвет фона формочки */
     transition: border-color 0.3s ease; /* Плавное изменение цвета рамки */
-    width: 50%; /* Ширина формочки (можете настроить по своему усмотрению) */
     border-radius: 10px; /* Закругление углов */
     display: flex; /* Отображение элементов в столбце */
     flex-direction: column; /* Расположение элементов в столбце */
@@ -54,6 +54,7 @@ body {
 
 /* Стили при наведении на формочку вакансии */
 .person-data:hover {
+    cursor: pointer;
     border-color: #0FB55F; /* Цвет рамки при наведении */
     box-shadow: 0 20px 20px -20px #0FB55F; /* Тень снизу вверх с зеленым цветом */
 }

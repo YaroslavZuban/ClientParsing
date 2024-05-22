@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    -- Тут идет подключение CSS файлов --
     <meta charset="UTF-8">
     <title>Соискатели</title>
     <link rel="stylesheet" href="/static/css/resume_list.css" th:href="@{/css/resume_list.css}">
@@ -8,8 +9,10 @@
     <link rel="stylesheet" href="/static/css/basement.css" th:href="@{/css/basement.css}">
     <link rel="stylesheet" href="/static/css/filter.css" th:href="@{/css/filter.css}">
     <link rel="stylesheet" href="/static/css/button.css" th:href="@{/css/button.css}">
+    <link rel="stylesheet" href="/static/css/resume.css" th:href="@{/css/resume.css}">
 </head>
 <body>
+-- Шапка сайта --
 <div class="header">
     <div class="header-logo">
         <img src="/static/image/logo.png" th:src="@{/image/logo.png}" alt="">
@@ -17,161 +20,166 @@
     </div>
 </div>
 
+-- проверяем что резюме вернулось --
 <div th:if="${resume != null}">
-    <div class="person-data-resume">
-        <div>
-            <strong>Имя:</strong>
+
+    -- Выводим главную информацио о соискателе --
+    <div class="island">
+        <div class="field-wrapper">
+            <strong class="field-title">Имя:</strong>
             <span th:text="${resume.name}"></span>
         </div>
 
-        <div th:if="${resume.getBirthData() != null}">
-            <strong>Дата рождения:</strong>
+        <div class="field-wrapper" th:if="${resume.getBirthData() != null}">
+            <strong class="field-title">Дата рождения:</strong>
             <span th:text="${resume.getBirthData()}"></span>
         </div>
 
-        <div>
-            <strong>Вакансия:</strong>
+        <div class="field-wrapper">
+            <strong class="field-title">Вакансия:</strong>
             <span th:text="${resume.title}"></span>
         </div>
 
-        <div th:if="${resume.wages != null}">
-            <strong>Заработная плата:</strong>
+        <div class="field-wrapper" th:if="${resume.wages != null}">
+            <strong class="field-title">Заработная плата:</strong>
             <span th:text="'от ' + ${resume.wages} + ' рублей'"></span>
         </div>
-        <div th:unless="${resume.wages != null}">
-            <strong>Заработная плата:</strong>
+        <div class="field-wrapper" th:unless="${resume.wages != null}">
+            <strong class="field-title">Заработная плата:</strong>
             <span>Договорная</span>
         </div>
 
-        <div th:if="${resume != null and resume.getGender() != null}">
-            <strong>Пол:</strong>
+        <div class="field-wrapper" th:if="${resume != null and resume.getGender() != null}">
+            <strong class="field-title">Пол:</strong>
             <span th:text="${resume.getGender().getType()}"></span>
         </div>
 
-        <div th:if="${resume != null and resume.getHabitation() != null}">
-            <strong>Город проживания:</strong>
+        <div class="field-wrapper" th:if="${resume != null and resume.getHabitation() != null}">
+            <strong class="field-title">Город проживания:</strong>
             <span th:text="${resume.getHabitation().getCity()}"></span>
         </div>
 
-        <div th:if="${resume.getWorkSchedule() != null}">
-            <strong>График работы:</strong>
+        -- Выводим график работы соискателя --
+        <div class="field-wrapper" th:if="${resume.getWorkSchedule() != null}">
+            <strong class="field-title">График работы:</strong>
 
-            <div th:each="work_schedule, work_stat : ${resume.getWorkSchedule()}">
+            <div class="field-value" th:each="work_schedule, work_stat : ${resume.getWorkSchedule()}">
                 <span th:text="${work_schedule.getWorkType()}"></span>
                 <span th:if="${!work_stat.last}">,</span>
             </div>
         </div>
 
-        <div th:if="${resume.getCitizenshipType() != null}">
-            <strong>Гражданство:</strong>
+        -- Выводим гражданства соискателя --
+        <div class="field-wrapper" th:if="${resume.getCitizenshipType() != null}">
+            <strong class="field-title">Гражданство:</strong>
 
-            <div th:each="citizenship_type : ${resume.getCitizenshipType()}">
+            <div class="field-value" th:each="citizenship_type : ${resume.getCitizenshipType()}">
                 <span th:text="${citizenship_type.getName()}"></span>
             </div>
         </div>
     </div>
 
+    -- Выводим историю работы соискателя --
+    -- Получаем список историй работ и их переработываем в массиве чтобы вывести каждую --
     <div class="work-history" th:if="${resume.getExperienceList() != null}">
-        <div class="title-work">
-            <div>
-                <h1>Опыт работы</h1>
-            </div>
-
-            <div th:each="work_history : ${resume.getExperienceList()}">
-                <div th:if="${work_history.getCompany() != null}">
-                    <strong>Компания:</strong>
-                    <span th:text="${work_history.getCompany()}"></span>
+        <h1 class="island-title">Опыт работы</h1>
+        <div>
+            <div class="island" th:each="work_history : ${resume.getExperienceList()}">
+                <div class="field-wrapper" th:if="${work_history.getCompany() != null}">
+                    <strong class="field-title">Компания:</strong>
+                    <span class="field-value" th:text="${work_history.getCompany()}"></span>
                 </div>
 
-                <div th:if="${work_history.getPost() != null}">
-                    <strong>Должность:</strong>
-                    <span th:text="${work_history.getPost()}"></span>
+                <div class="field-wrapper" th:if="${work_history.getPost() != null}">
+                    <strong class="field-title">Должность:</strong>
+                    <span class="field-value" th:text="${work_history.getPost()}"></span>
                 </div>
 
-                <div th:if="${work_history.getResponsibilities() != null}">
-                    <strong>Обязанности:</strong>
-                    <span th:text="${work_history.getResponsibilities()}"></span>
-                </div>
-
-                <div>
-                    <h3>------------------------</h3>
+                <div class="field-wrapper" th:if="${work_history.getResponsibilities() != null}">
+                    <strong class="field-title">Обязанности:</strong>
+                    <span class="field-value" th:text="${work_history.getResponsibilities()}"></span>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="education_person" th:if="${resume.getSpecifications() != null}">
-        <div>
-            <h1>Образование</h1>
-        </div>
+    -- Выводим образование соискателя --
+    -- Получаем список и выводи всю информацию об образовании соискателя--
+    <div th:if="${resume.getSpecifications() != null}">
+        <h1  class="island-title">Образование</h1>
+        <div class="island" >
+            <div th:each="specification : ${resume.getSpecifications()}">
+                <div class="field-wrapper" th:if="${specification.getEducationType() != null}">
+                    <strong class="field-title">Тип образования:</strong>
+                    <span th:text="${specification.getEducationType().getEducationLevel()}"></span>
+                </div>
 
-        <div th:each="specification : ${resume.getSpecifications()}">
-            <div th:if="${specification.getEducationType() != null}">
-                <strong>Тип образования:</strong>
-                <span th:text="${specification.getEducationType().getEducationLevel()}"></span>
-            </div>
+                <div class="field-wrapper" th:if="${specification.getEducationalInstitution() != null}">
+                    <strong class="field-title">Институт:</strong>
+                    <span th:text="${specification.getEducationalInstitution()}"></span>
+                </div>
 
-            <div th:if="${specification.getEducationalInstitution() != null}">
-                <strong>Институт:</strong>
-                <span th:text="${specification.getEducationalInstitution()}"></span>
-            </div>
+                <div class="field-wrapper" th:if="${specification.getDirection() != null}">
+                    <strong class="field-title">Специальность:</strong>
+                    <span th:text="${specification.getDirection()}"></span>
+                </div>
 
-            <div th:if="${specification.getDirection() != null}">
-                <strong>Специальность:</strong>
-                <span th:text="${specification.getDirection()}"></span>
-            </div>
-
-            <div th:if="${specification.getEnding() != null}">
-                <strong>Год окончания:</strong>
-                <span th:text="${specification.getEnding()}"></span>
+                <div class="field-wrapper" th:if="${specification.getEnding() != null}">
+                    <strong class="field-title">Год окончания:</strong>
+                    <span th:text="${specification.getEnding()}"></span>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="information_person_data" th:if="${resume.getInformation() != null}">
-        <div>
-            <h1>Дополнительная информация</h1>
-        </div>
-
-        <div th:if="${resume.getInformation().getCourses() != null}">
-            <strong>Курсы:</strong>
-            <span th:text="${resume.getInformation().getCourses()}"></span>
-        </div>
-
-        <div th:if="${resume.getInformation().getSkills() != null}">
-            <strong>Навыки:</strong>
-            <span th:text="${resume.getInformation().getSkills()}"></span>
-        </div>
-
-        <div th:if="${resume.getInformation().getAboutMe() != null}">
-            <strong>Обо мне:</strong>
-            <span th:text="${resume.getInformation().getAboutMe()}"></span>
-        </div>
-
-        <div th:if="${resume.getInformation().getLanguages() != null and resume.getInformation().getLevels() != null}">
-            <strong>Иностранные языки:</strong>
-            <div th:each="language, index : ${resume.getInformation().getLanguages()}">
-                <span th:text="|${language.getName()} (${resume.getInformation().getLevels().get(index.index).getKnowledgeLevel()})|"></span>
-                <span th:if="${!index.last}">,</span>
+    -- Выводим дополнительную информацию о соискателе --
+    <div th:if="${resume.getInformation() != null}">
+        <h1 class="island-title">Дополнительная информация</h1>
+        <div class="island" >
+            <div class="field-wrapper" th:if="${resume.getInformation().getCourses() != null}">
+                <strong class="field-title">Курсы:</strong>
+                <span th:text="${resume.getInformation().getCourses()}"></span>
             </div>
-        </div>
 
-        <div th:if="${resume.getInformation().getBusinessTrips() != null}">
-            <strong>Готовность к командировкам:</strong>
-            <span th:text="${resume.getInformation().getBusinessTrips().getReadiness()}"></span>
-        </div>
+            <div class="field-wrapper" th:if="${resume.getInformation().getSkills() != null}">
+                <strong class="field-title">Навыки:</strong>
+                <span  class="field-value" th:text="${resume.getInformation().getSkills()}"></span>
+            </div>
 
-        <div th:if="${resume.getInformation().getCategoryList() != null and !resume.getInformation().getCategoryList().isEmpty()}">
-            <strong>Вводительские права:</strong>
+            <div class="field-wrapper" th:if="${resume.getInformation().getAboutMe() != null}">
+                <strong class="field-title">Обо мне:</strong>
+                <span  class="field-value" th:text="${resume.getInformation().getAboutMe()}"></span>
+            </div>
 
-            <div th:each="category, index : ${resume.getInformation().getCategoryList()}">
-                <span th:text="${category.getCategory()}"></span>
-                <span th:if="${!index.last}">,</span>
+            -- Выводим иностранный языки и уровень их владея соискателя --
+            <div class="field-wrapper" th:if="${resume.getInformation().getLanguages() != null and resume.getInformation().getLevels() != null}">
+                <strong class="field-title">Иностранные языки:</strong>
+                <div  class="field-value" th:each="language, index : ${resume.getInformation().getLanguages()}">
+                    <span th:text="|${language.getName()} (${resume.getInformation().getLevels().get(index.index).getKnowledgeLevel()})|"></span>
+                    <span th:if="${!index.last}">,</span>
+                </div>
+            </div>
+
+            -- Выводим готовность к командировкам соискателя --
+            <div class="field-wrapper" th:if="${resume.getInformation().getBusinessTrips() != null}">
+                <strong class="field-title">Готовность к командировкам:</strong>
+                <span  class="field-value" th:text="${resume.getInformation().getBusinessTrips().getReadiness()}"></span>
+            </div>
+
+            -- Выводим водительские удостоверения соискателя --
+            <div class="field-wrapper" th:if="${resume.getInformation().getCategoryList() != null and !resume.getInformation().getCategoryList().isEmpty()}">
+                <strong class="field-title">Вводительские права:</strong>
+
+                <div  class="field-value" th:each="category, index : ${resume.getInformation().getCategoryList()}">
+                    <span th:text="${category.getCategory()}"></span>
+                    <span th:if="${!index.last}">,</span>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+-- Подвал сайта --
 <footer class="site-footer">
     <div class="footer-images">
         <span>

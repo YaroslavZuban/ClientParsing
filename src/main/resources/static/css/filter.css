@@ -9,6 +9,7 @@
 
 /* Стили для панели фильтра */
 .filter-panel {
+    min-width: 800px;
     border: 1px solid transparent; /* Прозрачная рамка */
     padding: 20px; /* Отступы внутри формочки */
     margin: 20px auto 0; /* Отступ сверху, выравнивание по центру */

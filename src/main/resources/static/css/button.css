@@ -1,16 +1,19 @@
 /* Стили для обертки кнопок */
 .button-wrapper {
+    margin-top: 16px;
+    width: 800px;
+    gap: 12px;
     display: flex;
     justify-content: space-between; /* Распределение кнопок равномерно по ширине */
     margin: auto; /* Центрирование по горизонтали */
-    width: 50%; /* Ширина обертки кнопок, можно настроить по вашему усмотрению */
 }
 
 /* Стили для контейнера овала */
 .oval-container-analysis {
+    padding: 10px;
     display: block;
     border: 2px solid #0FB55F;
-    border-radius: 50px;
+    border-radius: 32px;
     position: relative; /* Позиционирование элемента относительно его родителя */
 }
 
@@ -18,13 +21,14 @@
 .custom-button {
     background-color: transparent; /* Прозрачный цвет фона */
     color: #0FB55F; /* Зеленый цвет текста */
-    padding: 10px 20px; /* Внутренние отступы */
+    padding: 10px 15px; /* Внутренние отступы */
     border: 2px solid #0FB55F; /* Зеленая обводка */
     border-radius: 50px; /* Создание овальной формы */
     cursor: pointer; /* Изменяем курсор при наведении */
     margin: 10px;
     transition: background-color 0.3s, transform 0.3s, color 0.3s; /* Плавные анимации для цвета фона, масштаба и цвета текста */
 }
+
 
 /* Стили для текста "Анализ" на контуре овала */
 .oval-container-analysis::after {
@@ -41,9 +45,10 @@
 
 /* Стили для контейнера кнопок "Очистить" и "Поиск" */
 .clear-search-buttons {
+    padding: 10px;
     display: block;
     border: 2px solid #0FB55F;
-    border-radius: 50px;
+    border-radius: 32px;
     cursor: pointer; /* Изменяем курсор при наведении */
     align-items: center; /* Выравнивание элементов по вертикали */
 }
